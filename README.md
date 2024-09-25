@@ -6,7 +6,6 @@ This Python script converts Windows ICO files to macOS ICNS files. It provides a
 
 - Converts ICO files to ICNS format
 - Supports multiple image sizes within a single ICO file
-- Handles both PNG and BMP formatted images within ICO files
 - When you run the script just pick the image you whant and where you whant to save.
 - Displays detailed information about each image in the ICO file
 
