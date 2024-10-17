@@ -1,13 +1,13 @@
-# ICO to ICNS Converter
+# PNG to ICO and ICNS Converter
 
-This Python script converts Windows ICO files to macOS ICNS files. It provides a graphical user interface for selecting input and output files, making it easy to use for those who prefer not to use command-line tools.
+This Python script converts PNG files to both Windows ICO and macOS ICNS formats. It provides a graphical user interface for selecting input files, making it easy to use for those who prefer not to use command-line tools.
 
 ## Features
 
-- Converts ICO files to ICNS format
-- Supports multiple image sizes within a single ICO file
-- When you run the script just pick the image you whant and where you whant to save.
-- Displays detailed information about each image in the ICO file
+- Converts PNG files to both ICO and ICNS formats simultaneously
+- Supports multiple image sizes within a single ICO/ICNS file
+- Simple graphical user interface for file selection
+- Automatically generates output files in the same directory as the script
 
 ## Requirements
 
@@ -24,25 +24,24 @@ This Python script converts Windows ICO files to macOS ICNS files. It provides a
 pip install Pillow
 ```
 
-3. Download the `ico_to_icns_converter.py` script from this repository.
+3. Download the `png_to_ico_icns_converter.py` script from this repository.
 
 ## Usage
 
 1. Run the script:
 
 ```
-python ico_to_icns_converter.py
+python png_to_ico_icns_converter.py
 ```
 
-2. A file dialog will open. Select the ICO file you want to convert.
-3. Another file dialog will open. Choose the location and name for the output ICNS file.
-4. The script will process the ICO file and create the ICNS file at the specified location.
+2. A file dialog will open. Select the PNG file you want to convert.
+3. The script will process the PNG file and create both ICO and ICNS files in the same directory as the script.
 
 ## How It Works
 
-1. The script reads the ICO file and extracts information about each image it contains.
-2. It then processes each image and converts it to the appropriate format for ICNS.
-3. The script creates an ICNS file with the converted images, mapping each image to its corresponding ICNS icon type based on size.
+1. The script reads the PNG file and extracts information about each image it contains.
+2. It then processes each image and converts it to the appropriate format for ICO and ICNS.
+3. The script creates both ICO and ICNS files with the converted images, mapping each image to its corresponding icon type based on size.
 
 ## Supported ICNS Icon Types
 
@@ -58,9 +57,9 @@ The script supports the following ICNS icon types:
 
 ## Notes
 
-- The script allows loading of truncated images, which can be helpful for some improperly formatted ICO files.
-- If an ICO file contains image sizes that don't match the supported ICNS types, those images will be skipped.
-- The script provides detailed output about each image in the ICO file, including dimensions, color depth, and file format.
+- The script allows loading of truncated images, which can be helpful for some improperly formatted PNG files.
+- If a PNG file contains image sizes that don't match the supported ICNS types, those images will be skipped.
+- The script provides detailed output about each image in the PNG file, including dimensions, color depth, and file format.
 
 ## Contributing
 
