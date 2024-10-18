@@ -1,0 +1,3 @@
+([('PNG_to_ico_to_icns_converter',
+   '/Users/josef.nobach/Documents/GitHub/PNG_to_ico_to_icns_converter/dist/PNG_to_ico_to_icns_converter',
+   'EXECUTABLE')],)

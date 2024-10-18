@@ -7,6 +7,7 @@ from PIL import Image
 import sys
 import struct
 
+
 def convert_image(image_path, output_format):
     icon_original_name = "icon"
     icon_extension = output_format.lower()
@@ -40,6 +41,7 @@ def convert_image(image_path, output_format):
     except Exception as e:
         return f"An error occurred while creating the {icon_extension.upper()} file: {str(e)}"
 
+
 def create_icns(img, output_path):
     # Define the icon types and sizes
     icon_sizes = {
@@ -54,7 +56,12 @@ def create_icns(img, output_path):
 
     icns_data = b''
     for icon_type, size in icon_sizes.items():
-        resized_img = img.resize(size, Image.LANCZOS)
+        # Use different interpolation methods depending on size
+        if size[0] <= 32:  # For very small sizes, use NEAREST for crispness
+            resized_img = img.resize(size, Image.NEAREST)
+        else:  # For larger sizes, use LANCZOS for better quality
+            resized_img = img.resize(size, Image.LANCZOS)
+
         # Save the image to PNG format in memory
         from io import BytesIO
         png_data_io = BytesIO()
@@ -71,6 +78,7 @@ def create_icns(img, output_path):
         f.write(icns_header)
         f.write(icns_data)
 
+
 def select_file():
     file_path = filedialog.askopenfilename(filetypes=[("PNG files", "*.png")])
     if file_path:
@@ -80,23 +88,28 @@ def select_file():
 
         ico_result = convert_image(file_path, 'ico')
         icns_result = convert_image(file_path, 'icns')
-        messagebox.showinfo("Conversion Result", f"{ico_result}\n\n{icns_result}")
+        if "error" in ico_result.lower() or "error" in icns_result.lower():
+            messagebox.showerror("Conversion Error", f"{ico_result}\n\n{icns_result}")
+        else:
+            messagebox.showinfo("Conversion Result", f"{ico_result}\n\n{icns_result}")
+
 
 def main():
     root = tk.Tk()
     root.title("PNG to ICO/ICNS Converter")
-    root.geometry("400x150")
+    root.geometry("450x200")  # Increased size for better UI experience
 
     label = tk.Label(root, text="Select a PNG file to convert to ICO and ICNS:")
-    label.pack(pady=10)
+    label.grid(row=0, column=0, pady=10)
 
     select_button = tk.Button(root, text="Select PNG", command=select_file)
-    select_button.pack()
+    select_button.grid(row=1, column=0, pady=10)  # Corrected 'grid' method
 
-    info_label = tk.Label(root, text="This will create both ICO and ICNS files in the same directory as the selected PNG.")
-    info_label.pack(pady=10)
+    info_label = tk.Label(root, text="This will create both ICO and ICNS files in the same directory.")
+    info_label.grid(row=2, column=0, pady=10)
 
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()
