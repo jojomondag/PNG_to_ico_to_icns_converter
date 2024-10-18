@@ -7,7 +7,8 @@ This Python script converts PNG files to both Windows ICO and macOS ICNS formats
 - Converts PNG files to both ICO and ICNS formats simultaneously
 - Supports multiple image sizes within a single ICO/ICNS file
 - Simple graphical user interface for file selection
-- Automatically generates output files in the same directory as the script
+- Automatically generates output files in the same directory as the input PNG file
+- Avoids overwriting existing files by incrementing filenames
 
 ## Requirements
 
@@ -18,13 +19,14 @@ This Python script converts PNG files to both Windows ICO and macOS ICNS formats
 ## Installation
 
 1. Ensure you have Python 3.6 or higher installed on your system.
-2. Install the required Pillow library:
+2. Clone this repository or download the `PNG_to_ico_to_icns_converter.py` script.
+3. Install the required Pillow library:
 
 ```
 pip install Pillow
 ```
 
-3. Download the `png_to_ico_icns_converter.py` script from this repository.
+4. Download the `png_to_ico_icns_converter.py` script from this repository.
 
 ## Usage
 
